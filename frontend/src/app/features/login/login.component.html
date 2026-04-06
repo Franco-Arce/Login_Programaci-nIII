@@ -1,0 +1,39 @@
+<div class="page">
+  <form class="card" (ngSubmit)="onSubmit()" #f="ngForm">
+    <div class="logo">ISPC</div>
+    <h1>Portal de Acceso</h1>
+    <p class="subtitle">Programación III — Full Stack</p>
+
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+
+    <label>
+      <span>Usuario</span>
+      <input
+        type="text"
+        [(ngModel)]="username"
+        name="username"
+        autocomplete="username"
+        placeholder="tu_usuario"
+        [disabled]="loading()"
+      />
+    </label>
+
+    <label>
+      <span>Contraseña</span>
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        autocomplete="current-password"
+        placeholder="••••••••"
+        [disabled]="loading()"
+      />
+    </label>
+
+    <button type="submit" [disabled]="loading()">
+      {{ loading() ? 'Ingresando...' : 'Ingresar' }}
+    </button>
+  </form>
+</div>

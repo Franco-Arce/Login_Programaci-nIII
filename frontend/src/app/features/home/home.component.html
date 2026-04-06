@@ -1,0 +1,32 @@
+<div class="page">
+  @if (user(); as u) {
+    <div class="card">
+      <header>
+        <div>
+          <p class="label">ISPC · Portal de Acceso</p>
+          <h1>Bienvenido, {{ u.first_name || u.username }}</h1>
+        </div>
+        <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
+      </header>
+
+      <div class="grid">
+        <div class="field">
+          <span class="field-label">Usuario</span>
+          <span>{{ u.username }}</span>
+        </div>
+        <div class="field">
+          <span class="field-label">Nombre completo</span>
+          <span>{{ u.first_name }} {{ u.last_name }}</span>
+        </div>
+        <div class="field">
+          <span class="field-label">Email</span>
+          <span>{{ u.email }}</span>
+        </div>
+        <div class="field">
+          <span class="field-label">Rol</span>
+          <span class="badge" [class.admin]="u.role === 'admin'">{{ u.role }}</span>
+        </div>
+      </div>
+    </div>
+  }
+</div>
