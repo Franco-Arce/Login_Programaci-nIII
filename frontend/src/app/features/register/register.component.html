@@ -1,0 +1,61 @@
+<div class="page">
+  <form class="card" (ngSubmit)="onSubmit()" #f="ngForm">
+    <div class="logo">ISPC</div>
+    <h1>Crear cuenta</h1>
+    <p class="subtitle">Programación III — Full Stack</p>
+
+    @if (error()) {
+      <p class="message error">{{ error() }}</p>
+    }
+    @if (success()) {
+      <p class="message ok">Cuenta creada. Redirigiendo al login...</p>
+    }
+
+    <div class="row">
+      <label>
+        <span>Nombre</span>
+        <input type="text" [(ngModel)]="firstName" name="firstName"
+          placeholder="Juan" [disabled]="loading() || success()" />
+      </label>
+      <label>
+        <span>Apellido</span>
+        <input type="text" [(ngModel)]="lastName" name="lastName"
+          placeholder="Pérez" [disabled]="loading() || success()" />
+      </label>
+    </div>
+
+    <label>
+      <span>Usuario <span class="req">*</span></span>
+      <input type="text" [(ngModel)]="username" name="username"
+        autocomplete="username" placeholder="juan_perez"
+        [disabled]="loading() || success()" />
+    </label>
+
+    <label>
+      <span>Email</span>
+      <input type="email" [(ngModel)]="email" name="email"
+        autocomplete="email" placeholder="juan@example.com"
+        [disabled]="loading() || success()" />
+    </label>
+
+    <label>
+      <span>Contraseña <span class="req">*</span></span>
+      <input type="password" [(ngModel)]="password" name="password"
+        autocomplete="new-password" placeholder="••••••••"
+        [disabled]="loading() || success()" />
+    </label>
+
+    <label>
+      <span>Repetir contraseña <span class="req">*</span></span>
+      <input type="password" [(ngModel)]="password2" name="password2"
+        autocomplete="new-password" placeholder="••••••••"
+        [disabled]="loading() || success()" />
+    </label>
+
+    <button type="submit" [disabled]="loading() || success()">
+      {{ loading() ? 'Registrando...' : 'Registrarme' }}
+    </button>
+
+    <p class="switch">¿Ya tenés cuenta? <a routerLink="/login">Iniciá sesión</a></p>
+  </form>
+</div>
