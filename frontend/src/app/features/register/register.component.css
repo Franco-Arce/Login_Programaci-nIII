@@ -52,7 +52,12 @@ h1 { font-size: 1.25rem; font-weight: 500; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
+  min-width: 0;
 }
+
+.row label { min-width: 0; }
+
+.row input { width: 100%; }
 
 label { display: flex; flex-direction: column; gap: 0.4rem; }
 
@@ -70,6 +75,8 @@ input {
   padding: 0.6rem 0.75rem;
   outline: none;
   transition: border-color 0.15s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 input:focus { border-color: var(--accent); }
